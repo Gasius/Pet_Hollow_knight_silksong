@@ -4,26 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreGameRequest;
 use App\Http\Requests\UpdateGameRequest;
-use App\Models\Game;
+use App\Models\Quest;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
-class GameController extends Controller
+class QuestController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
-        $isAdmin = $user && $user->isAdmin();
-
-        if ($isAdmin) {
-            $games = Game::latest()->paginate(10);
-        } else {
-            $games = Game::available()->latest()->paginate(10);
-        }
+        $quests = Quest::latest();
 
         return inertia('Home/Index', [
-            'games' => $games,
-            'isAdmin' => $isAdmin,
+            'quest' => $quests,
         ]);
     }
 
@@ -34,27 +26,27 @@ class GameController extends Controller
 
     public function store(StoreGameRequest $request)
     {
-        Game::create($request->validated());
+        Quest::create($request->validated());
         return redirect()->route('games.index')->with('success', 'Игра успешно добавлена!');
     }
 
-    public function show(Game $game)
+    public function show(Quest $game)
     {
         return inertia('Home/Game', ['game' => $game]);
     }
 
-    public function edit(Game $game)
+    public function edit(Quest $game)
     {
         return inertia('Games/Edit', ['game' => $game]);
     }
 
-    public function update(UpdateGameRequest $request, Game $game)
+    public function update(UpdateGameRequest $request, Quest $game)
     {
         $game->update($request->validated());
         return redirect()->route('games.index');
     }
 
-    public function destroy(Game $game)
+    public function destroy(Quest $game)
     {
         $game->delete();
         return redirect()->route('games.index');
