@@ -12,8 +12,8 @@ const isAdmin = computed(() => user.value && user.value.role === 'admin');
 
 <template>
     <nav class="bg-gray-800/50 backdrop-blur-[5px] p-4 flex justify-between items-center fixed top-0 w-full z-10 shadow-lg">
-        <a href="/games">
-            <img class="w-[120px] invert" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Hollow_Knight_Silksong_Logo.svg/1600px-Hollow_Knight_Silksong_Logo.svg.png?20250820104500" alt="logo">
+        <a href="/quests">
+            <img class="w-[120px] invert hover:invert-0  hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.7)] transition-all duration-100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Hollow_Knight_Silksong_Logo.svg/1600px-Hollow_Knight_Silksong_Logo.svg.png?20250820104500" alt="logo">
         </a>
 
         <div class="flex items-center space-x-4">

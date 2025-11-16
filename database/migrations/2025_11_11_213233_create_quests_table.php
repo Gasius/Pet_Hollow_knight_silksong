@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('quests', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('image');
             $table->text('description')->nullable();
             $table->string('category');
             $table->boolean('required')->default(false);

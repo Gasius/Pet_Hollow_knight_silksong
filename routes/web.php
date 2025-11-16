@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return redirect()->route('games.index');
+    return redirect()->route('quests.index');
 });
 
 Route::middleware('auth')->group(function () {
@@ -30,7 +30,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/games/{game}', [QuestController::class, 'destroy'])->name('games.destroy');
 });
 
-Route::get('/games', [QuestController::class, 'index'])->name('games.index');
-Route::get('/games/{game}', [QuestController::class, 'show'])->name('games.show');
+Route::get('/quests', [QuestController::class, 'index'])->name('quests.index');
+Route::get('/quests/{quest}', [QuestController::class, 'show'])->name('quests.show');
 
 require __DIR__.'/auth.php';

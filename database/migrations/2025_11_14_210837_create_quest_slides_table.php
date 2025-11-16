@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_quests', function (Blueprint $table) {
+        Schema::create('quest_slides', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('quest_id')->constrained()->onDelete('cascade');
-            $table->unique(['user_id', 'quest_id']);
+            $table->integer('slide_number');
+            $table->text('text');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_quests');
+        Schema::dropIfExists('quest_slides');
     }
 };
